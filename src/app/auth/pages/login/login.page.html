@@ -5,16 +5,20 @@
   </ion-avatar>
 
 
-  <ion-item color="primary">
-    <ion-icon slot="start" name="mail"></ion-icon>
-    <ion-input type="email" placeholder="Email" inputmode="email" autofocus="true"></ion-input>
-  </ion-item>
-  <ion-item color="primary">
-    <ion-icon slot="start" name="lock"></ion-icon>
-    <ion-input type="password" placeholder="Senha"></ion-input>
-  </ion-item>
+  <form [formGroup]="authForm" (submit)="onSubmit()">
+    <ion-item color="primary">
+      <ion-icon slot="start" name="mail"></ion-icon>
+      <ion-input type="email" placeholder="Email" formControlName="email" inputmode="email" autofocus="true">
+      </ion-input>
+    </ion-item>
 
-  <ion-button expand="block">Login</ion-button>
+    <ion-item color="primary">
+      <ion-icon slot="start" name="lock"></ion-icon>
+      <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit" [disabled]="authForm.invalid">Login</ion-button>
+  </form>
+
   <ion-button expand="block" fill="clear">Criar conta</ion-button>
   <ion-button expand="block">
     <ion-icon slot="start" name="logo-facebook"></ion-icon>
